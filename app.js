@@ -126,7 +126,7 @@ app.post('/add/:schema/nest', (req, res, next) => {
   });
 });
 
-app.post('/update/:schema', (req, res, next) => {
+app.put('/update/:schema', (req, res, next) => {
   console.info('Updating the following to ', req.params.schema, ' schema:\n', req.body);
   next()
 }, (req, res) => {
