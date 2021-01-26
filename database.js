@@ -30,19 +30,6 @@ const executeWrite = (realm, schema, object, action, filter, property) => {
  
   if (action === 'add') {
     realm.create(schema, object);
-  } else if (action === 'nest') {
-    let objectToPushTo = realm.objects(schema).filtered(filter)["0"];
-    if (objectToPushTo.hasOwnProperty(property)) {
-      let list = objectToPushTo[property];
-      if (!list) {
-        list = [];
-      }
-      list.push(object);
-    } else {
-      throw {
-        message: "The property you're attempting to access does not exist.",
-      }
-    }
   } else if (action === 'update') {
     realm.create(schema, object, true);
   } else if (action === 'updateMultiple') {
@@ -62,9 +49,6 @@ const executeWrite = (realm, schema, object, action, filter, property) => {
         
       }
     });
-  } else if (action === 'delete') {
-    let objectToDelete = realm.objects(schema).filtered(filter);
-    realm.delete(objectToDelete)
   } else if (action === 'deleteAll') {
     let objectToDelete = realm.objects(schema);
     realm.delete(objectToDelete);
