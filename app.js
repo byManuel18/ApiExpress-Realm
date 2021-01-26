@@ -105,7 +105,7 @@ app.delete('/delete/:schema/:id',(req,res)=>{
   rlib.writeToRealm(realm,[{ schema: req.params.schema, action: 'deleteid',object:e}]);
 })
 
-app.delete('/delete/:schema/all', (req, res, next) => {
+app.delete('/delete/:schema', (req, res, next) => {
   console.info('Deleting all ', req.params.schema);
   next()
 }, (req, res) => {
